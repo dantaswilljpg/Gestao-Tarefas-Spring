@@ -1,18 +1,34 @@
 package projeto.gestaotarefas;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "tasks")
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String description;
-    private boolean completed;
+    private String descricao;
+    private String status;
+    private boolean concluida; // Adicionando o atributo 'concluida'
 
-    // Getters e Setters
+    // Construtores, getters e setters
+
+    public Task() {
+    }
+
+    public Task(Long id, String descricao, String status, boolean concluida) {
+        this.id = id;
+        this.descricao = descricao;
+        this.status = status;
+        this.concluida = concluida;
+    }
+
+    // Getters e setters
+
     public Long getId() {
         return id;
     }
@@ -21,27 +37,27 @@ public class Task {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getDescription() {
-        return description;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    public boolean isConcluida() {
+        return concluida;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setConcluida(boolean concluida) {
+        this.concluida = concluida;
     }
 }
